@@ -54,7 +54,7 @@ class MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _videoPlayerController =
-        VideoPlayerController.asset('assets/videos/BigBuckBunny.mp4')
+        VideoPlayerController.asset('assets/videos/NeverGonnaGiveYouUp.webm')
           ..initialize().then((_) {
             setState(() {});
           });
