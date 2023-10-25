@@ -3,3 +3,6 @@ zip:
 
 unzip:
 	7z x assets.7z
+
+lint:
+	flutter analyze
