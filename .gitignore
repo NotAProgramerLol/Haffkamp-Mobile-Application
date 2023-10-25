@@ -43,5 +43,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Videos shouldn't be uploaded to upstream
+# Assets shouldn't be uploaded to upstream
 /assets/
+assets.7z
