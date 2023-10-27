@@ -6,3 +6,12 @@ unzip:
 
 lint:
 	flutter analyze
+
+runRelease:
+	flutter run --release
+
+runProfile:
+	flutter run --profile
+
+runDebug:
+	flutter run --debug
