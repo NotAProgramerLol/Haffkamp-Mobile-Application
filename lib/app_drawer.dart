@@ -53,12 +53,7 @@ Widget myDrawer(BuildContext context) {
               title: const Text("Adblue"),
               leading: const Icon(Icons.local_gas_station),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const Videos(),
-                  ),
-                );
+                // Handle video
               },
             ),
             ListTile(
@@ -68,16 +63,11 @@ Widget myDrawer(BuildContext context) {
                 // Handle video
               },
             ),
-             ListTile(
+            ListTile(
               title: const Text("Stroom"),
               leading: const Icon(Icons.electric_bolt),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const Videos(),
-                  ),
-                );
+                // Handle video
               },
             ),
             ListTile(
@@ -87,16 +77,11 @@ Widget myDrawer(BuildContext context) {
                 // Handle video
               },
             ),
-             ListTile(
+            ListTile(
               title: const Text("Luifel"),
               leading: const Icon(Icons.terrain),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const Videos(),
-                  ),
-                );
+                // Handle video
               },
             ),
             ListTile(
