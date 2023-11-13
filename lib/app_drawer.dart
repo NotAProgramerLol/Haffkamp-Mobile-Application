@@ -45,18 +45,68 @@ Widget myDrawer(BuildContext context) {
             );
           },
         ),
-        ListTile(
-          dense: false,
+        ExpansionTile(
           title: const Text("Videos"),
           leading: const Icon(Icons.video_library),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) => const Videos(),
-              ),
-            );
-          },
+          children: [
+            ListTile(
+              title: const Text("Adblue"),
+              leading: const Icon(Icons.local_gas_station),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const Videos(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text("Truma"),
+              leading: const Icon(Icons.touch_app),
+              onTap: () {
+                // Handle video
+              },
+            ),
+             ListTile(
+              title: const Text("Stroom"),
+              leading: const Icon(Icons.electric_bolt),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const Videos(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text("Koelkast"),
+              leading: const Icon(Icons.kitchen),
+              onTap: () {
+                // Handle video
+              },
+            ),
+             ListTile(
+              title: const Text("Luifel"),
+              leading: const Icon(Icons.terrain),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const Videos(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text("Fietsendrager"),
+              leading: const Icon(Icons.pedal_bike),
+              onTap: () {
+                // Handle video
+              },
+            ),
+          ],
         ),
         ListTile(
           dense: false,
