@@ -1,10 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerWidget extends StatefulWidget {
   final String videoPath;
 
-  const VideoPlayerWidget({required this.videoPath, Key? key}) : super(key: key);
+  const VideoPlayerWidget({required this.videoPath, Key? key})
+      : super(key: key);
 
   @override
   VideoPlayerWidgetState createState() => VideoPlayerWidgetState();
@@ -15,17 +18,24 @@ class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   late Future<void> _initializeVideoPlayerFuture;
   bool _isPlaying = false;
   bool _isMuted = false;
+  Timer? _timer;
 
   @override
   void initState() {
     super.initState();
     _controller = VideoPlayerController.asset(widget.videoPath);
     _initializeVideoPlayerFuture = _controller.initialize();
+
+    // Start the timer to run _formatDuration every second
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {});
+    });
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _timer?.cancel(); // Cancel the timer when disposing of the widget
     super.dispose();
   }
 
@@ -48,9 +58,12 @@ class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
     });
   }
 
-  void _seekTo(double seconds) {
-    Duration newDuration = Duration(seconds: seconds.toInt());
-    _controller.seekTo(newDuration);
+  String _formatDuration(Duration duration) {
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
+    String minutes = twoDigits(duration.inMinutes.remainder(60));
+    String seconds = twoDigits(duration.inSeconds.remainder(60));
+
+    return "$minutes:$seconds";
   }
 
   @override
@@ -66,7 +79,7 @@ class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                 child: VideoPlayer(_controller),
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   IconButton(
                     icon: Icon(_isPlaying ? Icons.pause : Icons.play_arrow),
@@ -81,12 +94,16 @@ class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                       _controller,
                       allowScrubbing: true,
                       colors: const VideoProgressColors(
-                        playedColor: Colors.red,
+                        playedColor: Color(0xFF75A854),
                         bufferedColor: Colors.grey,
                         backgroundColor: Colors.black,
                       ),
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0 ),
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     ),
+                  ),
+                  Text(
+                    _formatDuration(_controller.value.position),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ],
               ),
