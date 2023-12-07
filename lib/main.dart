@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:video_player/video_player.dart';
 
 import 'app_drawer.dart';
 import 'video_player.dart';
 import 'info.dart';
-import 'videos.dart';
+import 'videos/adblue.dart';
+import 'videos/truma.dart';
+import 'videos/stroom.dart';
+import 'videos/koelkast.dart';
+import 'videos/luifel.dart';
+import 'videos/fietsendrager.dart';
 import 'campers.dart';
 import 'contact.dart';
 
@@ -24,7 +28,12 @@ class MainApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/', page: () => const MyHomePage(title: 'Haffkamp')),
         GetPage(name: '/info', page: () => const Info()),
-        GetPage(name: '/videos', page: () => const Videos()),
+        GetPage(name: '/videos/adblue', page: () => const Adblue()),
+        GetPage(name: '/videos/truma', page: () => const Truma()),
+        GetPage(name: '/videos/stroom', page: () => const Stroom()),
+        GetPage(name: '/videos/koelkast', page: () => const Koelkast()),
+        GetPage(name: '/videos/luifel', page: () => const Luifel()),
+        GetPage(name: '/videos/fietsendrager', page: () => const Fietsendrager()),
         GetPage(name: '/campers', page: () => const Campers()),
         GetPage(name: '/contact', page: () => const Contact()),
       ],
