@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
+
 import 'app_drawer.dart';
+import 'video_player.dart';
 import 'info.dart';
 import 'videos.dart';
 import 'campers.dart';
@@ -47,49 +49,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class MyHomePageState extends State<MyHomePage> {
-  late VideoPlayerController _videoPlayerController;
-  late bool _isPlaying = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _videoPlayerController =
-        VideoPlayerController.asset('assets/videos/NeverGonnaGiveYouUp.webm')
-          ..initialize().then((_) {
-            setState(() {});
-          });
-  }
-
-  @override
-  void dispose() {
-    _videoPlayerController.dispose();
-    super.dispose();
-  }
-
-  void _toggleVideoPlayback() {
-    setState(() {
-      if (_videoPlayerController.value.isPlaying) {
-        _videoPlayerController.pause();
-        _isPlaying = false;
-      } else {
-        _videoPlayerController.play();
-        _isPlaying = true;
-      }
-    });
-  }
-
-  void _stopVideoPlayback() {
-    setState(() {
-      _videoPlayerController.pause();
-      _videoPlayerController.seekTo(Duration.zero);
-      _isPlaying = false;
-    });
-  }
-
-  void _handleVideoTap() {
-    _toggleVideoPlayback();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,30 +56,9 @@ class MyHomePageState extends State<MyHomePage> {
         title: Image.asset('assets/images/logo.png'),
       ),
       drawer: myDrawer(context),
-      body: Stack(
+      body: const Stack(
         children: [
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 50.0,
-              margin: const EdgeInsets.all(0),
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.inversePrimary,
-              ),
-              child: Text(
-                'Contactgegevens',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          const Center(
+          Center(
             child: Card(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -146,46 +84,8 @@ class MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width - 10,
-              height: (MediaQuery.of(context).size.width - 10) * (9 / 16),
-              child: _videoPlayerController.value.isInitialized
-                  ? GestureDetector(
-                      onTap: _handleVideoTap,
-                      child: AspectRatio(
-                        aspectRatio: _videoPlayerController.value.aspectRatio,
-                        child: Stack(
-                          children: [
-                            VideoPlayer(_videoPlayerController),
-                            Positioned(
-                              bottom: 0,
-                              right: 0,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  IconButton(
-                                    icon: Icon(_isPlaying
-                                        ? Icons.pause
-                                        : Icons.play_arrow),
-                                    onPressed: _toggleVideoPlayback,
-                                  ),
-                                  IconButton(
-                                    icon: const Icon(Icons.stop),
-                                    onPressed: _stopVideoPlayback,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                  : Container(),
-            ),
+          VideoPlayerWidget(
+            videoPath: 'assets/videos/NeverGonnaGiveYouUp.webm',
           ),
         ],
       ),
