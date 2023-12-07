@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:haffkamp/app_drawer.dart';
 
-class Videos extends StatelessWidget {
-  const Videos({super.key});
+class Fietsendrager extends StatelessWidget {
+  const Fietsendrager({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class Videos extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(16.0),
             child: Text(
-              'Videos',
+              'Fietsendrager',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -27,7 +27,7 @@ class Videos extends StatelessWidget {
           SizedBox(height: 8),
           Expanded(
             child: Center(
-              child: Text('This is the video screen.'),
+              child: Text('This is the video Fietsendrager screen.'),
             ),
           ),
         ],

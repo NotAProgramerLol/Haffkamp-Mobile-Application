@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'info.dart';
 import 'handleidingen.dart';
-import 'videos.dart';
+import 'videos/adblue.dart';
+import 'videos/truma.dart';
+import 'videos/stroom.dart';
+import 'videos/koelkast.dart';
+import 'videos/luifel.dart';
+import 'videos/fietsendrager.dart';
 import 'campers.dart';
 import 'contact.dart';
 
@@ -53,42 +58,72 @@ Widget myDrawer(BuildContext context) {
               title: const Text("Adblue"),
               leading: const Icon(Icons.local_gas_station),
               onTap: () {
-                // Handle video
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const Adblue(),
+                  ),
+                );
               },
             ),
             ListTile(
               title: const Text("Truma"),
               leading: const Icon(Icons.touch_app),
               onTap: () {
-                // Handle video
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const Truma(),
+                  ),
+                );
               },
             ),
             ListTile(
               title: const Text("Stroom"),
               leading: const Icon(Icons.electric_bolt),
               onTap: () {
-                // Handle video
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const Stroom(),
+                  ),
+                );
               },
             ),
             ListTile(
               title: const Text("Koelkast"),
               leading: const Icon(Icons.kitchen),
               onTap: () {
-                // Handle video
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const Koelkast(),
+                  ),
+                );
               },
             ),
             ListTile(
               title: const Text("Luifel"),
               leading: const Icon(Icons.terrain),
               onTap: () {
-                // Handle video
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const Luifel(),
+                  ),
+                );
               },
             ),
             ListTile(
               title: const Text("Fietsendrager"),
               leading: const Icon(Icons.pedal_bike),
               onTap: () {
-                // Handle video
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const Fietsendrager(),
+                  ),
+                );
               },
             ),
           ],
