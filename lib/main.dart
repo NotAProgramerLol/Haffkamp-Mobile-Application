@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'app_drawer.dart';
 import 'video_player.dart';
@@ -38,6 +39,7 @@ class MainApp extends StatelessWidget {
         GetPage(name: '/contact', page: () => const Contact()),
       ],
       theme: ThemeData(
+        fontFamily: GoogleFonts.poppins().fontFamily,
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF75A854)),
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF9fd67b),
