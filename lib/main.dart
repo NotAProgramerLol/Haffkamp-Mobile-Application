@@ -29,14 +29,7 @@ class MainApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/', page: () => const MyHomePage(title: 'Haffkamp')),
         GetPage(name: '/info', page: () => const Info()),
-        GetPage(name: '/videos/adblue', page: () => const Adblue()),
-        GetPage(name: '/videos/truma', page: () => const Truma()),
-        GetPage(name: '/videos/stroom', page: () => const Stroom()),
-        GetPage(name: '/videos/koelkast', page: () => const Koelkast()),
-        GetPage(name: '/videos/luifel', page: () => const Luifel()),
-        GetPage(name: '/videos/fietsendrager', page: () => const Fietsendrager()),
-        GetPage(name: '/campers', page: () => const Campers()),
-        GetPage(name: '/contact', page: () => const Contact()),
+        // Add other GetPages entries here
       ],
       theme: ThemeData(
         fontFamily: GoogleFonts.poppins().fontFamily,
@@ -50,16 +43,11 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
-  @override
-  MyHomePageState createState() => MyHomePageState();
-}
-
-class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,36 +55,49 @@ class MyHomePageState extends State<MyHomePage> {
         title: Image.asset('assets/images/logo.png'),
       ),
       drawer: myDrawer(context),
-      body: const Stack(
+      body: Stack(
+        fit: StackFit.expand,
         children: [
-          Center(
-            child: Card(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  ListTile(
-                    title: Text(
-                      'Welkom bij Haffkamp Campers Randstad',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      'Haffkamp Campers Randstad is een full-service camper bedrijf, waar u terecht kunt voor huren en kopen van de nieuwste luxe campers (2 tot 7 personen).',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+          FractionallySizedBox(
+            alignment: Alignment.topCenter,
+            heightFactor: 0.8, // Adjust this value to control the height of the background image
+            child: Image.asset(
+              'assets/images/camper.png', // Replace with your image path
+              
             ),
           ),
-          VideoPlayerWidget(
-            videoPath: 'assets/videos/NeverGonnaGiveYouUp.webm',
+          Column(
+            children: [
+              Spacer(), // Add Spacer to create space at the top
+              Card(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    ListTile(
+                      title: Text(
+                        'Welkom bij Haffkamp Campers Randstad',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        'Haffkamp Campers Randstad is een full-service camper bedrijf, waar u terecht kunt voor huren en kopen van de nieuwste luxe campers (2 tot 7 personen).',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Spacer(), // Add Spacer to create space between Card and VideoPlayer
+              VideoPlayerWidget(
+                videoPath: 'assets/videos/Test_Main_Video.mp4',
+              ),
+            ],
           ),
         ],
       ),
