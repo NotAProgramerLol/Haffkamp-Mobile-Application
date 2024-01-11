@@ -34,7 +34,8 @@ class MainApp extends StatelessWidget {
         GetPage(name: '/videos/stroom', page: () => const Stroom()),
         GetPage(name: '/videos/koelkast', page: () => const Koelkast()),
         GetPage(name: '/videos/luifel', page: () => const Luifel()),
-        GetPage(name: '/videos/fietsendrager', page: () => const Fietsendrager()),
+        GetPage(
+            name: '/videos/fietsendrager', page: () => const Fietsendrager()),
         GetPage(name: '/campers', page: () => const Campers()),
         GetPage(name: '/contact', page: () => const Contact()),
       ],
@@ -67,10 +68,14 @@ class MyHomePageState extends State<MyHomePage> {
         title: Image.asset('assets/images/logo.png'),
       ),
       drawer: myDrawer(context),
-      body: const Stack(
-        children: [
-          Center(
-            child: Card(
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            VideoPlayerWidget(
+              videoPath: 'assets/videos/NeverGonnaGiveYouUp.webm',
+            ),
+            Card(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
@@ -94,11 +99,8 @@ class MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-          ),
-          VideoPlayerWidget(
-            videoPath: 'assets/videos/NeverGonnaGiveYouUp.webm',
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
